@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'global/css/reset.css' %}">
     <link rel="stylesheet" href=" {% static 'landing/css/styleInicialPage.css' %}">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1029/1029183.png" type="image/x-icon">
     <title>AllForOne</title>
@@ -23,19 +24,21 @@
 
 <body>
     <header class="header">
-        <a href="/" class="logo">
-            <i class="fa-solid fa-heart menu-icon"></i>
-            <h1>AllForOne</h1>
-        </a>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <i class="fa-solid fa-heart menu-icon"></i>
+                <h1>AllForOne</h1>
+            </a>
 
-        <nav>
-            <ul class="menu">
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#contact">Contato</a></li>
-                <li class="donate"><a href="/">Quero Doar</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul class="menu">
+                    <li><a class="link" href="#about">Sobre</a></li>
+                    <li><a class="link" href="#projects">Projetos</a></li>
+                    <li><a class="link" href="#contact">Contato</a></li>
+                    <li><a class="donate" href="/">Quero Doar</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section id="about" class="about"></section>
