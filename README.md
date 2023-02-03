@@ -4,7 +4,6 @@ Projeto da disciplina de Sistemas Distribuídos usando Django. Vaquinha online p
 ## Padrões do projeto
 - Nomes de classes: PascalCase
 - Nomes de métodos e variáveis: snake_case
-- Nomes de funções: camelCase
 
 ## Setup de instalação
 Faça o download do repositório remoto na pasta de preferência:
