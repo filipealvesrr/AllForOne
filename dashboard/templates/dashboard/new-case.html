@@ -35,7 +35,7 @@
 
                 <div class="description">
                     <h1>Cadastrar novo caso</h1>
-                    <p>Descreva o caso detalhadamente para encontrar o doador que fará parte da sua história</p>
+                    <p>Descreva o caso detalhadamente para encontrar um herói para resolver isso.</p>
                 </div>
 
                 <div class="link-home">
@@ -47,7 +47,19 @@
             </div>
             <div class="form-register">
                 <form action="">
-
+                    <input type="text" name="title-case" id="title-case" placeholder="Titulo do caso">
+                    <textarea name="description" id="description" placeholder="Descrição"></textarea>
+                    <div class="value-data">
+                        <input type="number" name="" id="value-case" placeholder="Valor em reais">
+                        <div class="date">
+                            <label for="date-end">Data de Expiração</label>
+                            <input type="date" name="date-end" id="date-end">
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a href="/">Cancelar</a>
+                        <input type="submit" value="Cadastrar" class="submit">
+                    </div>
                 </form>
             </div>
         </section>
