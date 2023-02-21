@@ -27,7 +27,7 @@
         <section class="wrapper container">
             <div class="text">
                 <div class="logo-container">
-                    <a href="/" class="logo">
+                    <a href="{% url 'dashboard:home' %}" class="logo">
                         <i class="fa-solid fa-heart menu-icon"></i>
                         <h1>AllForOne</h1>
                     </a>
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="link-home">
-                    <a href="">
+                    <a href="{% url 'dashboard:home' %}">
                         <i class="fa-solid fa-left-long"></i>
                         <h3>Voltar para o painel</h3>
                     </a>
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="buttons">
-                        <a href="/">Cancelar</a>
+                        <a href="{% url 'dashboard:home' %}">Cancelar</a>
                         <input type="submit" value="Cadastrar" class="submit">
                     </div>
                 </form>

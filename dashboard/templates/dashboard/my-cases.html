@@ -1,0 +1,19 @@
+{% extends 'global/base.html' %}
+{% block title %}Meus casos{% endblock title %}
+
+{% block content %}
+    <section class="title-section container">
+        <h2>Meus casos</h2>
+    </section>
+    <section class="cards-section container">
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+    </section>
+{% endblock content %}
+
+
+      

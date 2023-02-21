@@ -1,0 +1,15 @@
+<header class="header container">
+    <div class="header-container">
+        <a href="{% url 'dashboard:home' %}" class="logo">
+            <i class="fa-solid fa-heart menu-icon"></i>
+            <h1>AllForOne</h1>
+        </a>
+       <div class="buttons">
+            <a href="{% url 'dashboard:mycases' %}" class="new-case my-case">Meus casos</a>
+            <a href="{% url 'dashboard:newcase' %}" class="new-case">Cadastrar novo caso</a>
+            <a href="">
+                <i class="fa-solid fa-power-off header-off"></i>
+            </a>
+       </div>
+    </div>
+</header>

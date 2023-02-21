@@ -7,3 +7,7 @@ def dashboard(request):
 
 def new_case(request):
     return render(request, 'dashboard/new-case.html')
+
+
+def my_cases(request):
+    return render(request, 'dashboard/my-cases.html')
