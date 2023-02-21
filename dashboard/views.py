@@ -4,6 +4,7 @@ from django.shortcuts import render
 def dashboard(request):
     return render(request, 'dashboard/pages/dashboard.html', context={
         'is_dash': True,
+        'is_card_dash': True,
     })
 
 
