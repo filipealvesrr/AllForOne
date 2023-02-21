@@ -2,11 +2,14 @@
 <html lang="pt-BR">
 <head>
     {% include 'dashboard/partials/head.html' %}
+    <link rel="stylesheet" href="{% block linkcss %}{% endblock linkcss %}">
     <title> {% block title %}{% endblock title %} | AllForOne</title>
 </head>
 <body>
-    {% include 'dashboard/partials/header.html' %}
-
+    {% if is_dash is True %}
+        {% include 'dashboard/partials/header.html' %}
+    {% endif %}
+    
     <main>
         {% block content %}{% endblock content %}
     </main>

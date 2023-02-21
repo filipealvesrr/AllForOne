@@ -1,175 +1,21 @@
+{% extends 'global/base.html' %}
 {% load static %}
+{% block linkcss %}{% static 'dashboard/css/dash-style.css' %}{% endblock linkcss %}
+{% block title %}DashBoard{% endblock title %}
+{% block content %}
+    <section class="title-section container">
+        <h2>Casos cadastrados</h2>
+        <h3>Bem vindo, Filipe</h3>
+    </section>
+    <section class="cards-section container">
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+        {% include 'dashboard/partials/card.html' %}
+    </section>
+{% endblock content %}
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description"
-            content="Unindo doadores e grupos que precisam de ajuda, promovendo a empatia e a solidariedade">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'global/css/reset.css' %}">
-        <link rel="stylesheet" href=" {% static 'dashboard/css/dash-style.css' %}">
-        <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1029/1029183.png" type="image/x-icon">
-        <title>Dashboard | AllForOne</title>
-    </head>
-</head>
-<body>
-    <header class="header container">
-        <div class="header-container">
-            <a href="{% url 'dashboard:home' %}" class="logo">
-                <i class="fa-solid fa-heart menu-icon"></i>
-                <h1>AllForOne</h1>
-            </a>
-           <div class="buttons">
-                <a href="{% url 'dashboard:mycases' %}" class="new-case my-case">Meus casos</a>
-                <a href="{% url 'dashboard:newcase' %}" class="new-case">Cadastrar novo caso</a>
-                <a href="">
-                    <i class="fa-solid fa-power-off header-off"></i>
-                </a>
-           </div>
-        </div>
-    </header>
-    <main>
-        <section class="title-section container">
-            <h2>Casos cadastrados</h2>
-            <h3>Bem vindo, Filipe</h3>
-        </section>
-        <section class="cards-section container">
-            <div class="card">
-                <div class="content">
-                    <div class="title-card">
-                        <h4 class="title-case">CASO</h4>
-                        <p class="info">Cadelinha atropelada</p>
-                    </div>
-                    <div class="text">
-                        <h4 class="title-case">VALOR TOTAL</h4>
-                        <p class="info">R$ 120,00 reais</p>
-                    </div>
-                </div>
-                <div class="description">
-                    <h4 class="title-case">DESCRIÇÃO</h4>
-                    <p class="info">A cadelinha Jolie foi atropelada por um carro no bairro Santana e teve que passar por uma cirurgia às pressas.</p>
-                </div>
-                <div class="value">
-                    <div class="text">
-                        <h4 class="title-case">VALOR ACUMULADO</h4>
-                        <p class="info last">R$ 120,00 reais</p>
-                    </div>
-                    <div class="link-button">
-                        <a href="">Ajudar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                    <div class="title-card">
-                        <h4 class="title-case">CASO</h4>
-                        <p class="info">Cadelinha atropelada</p>
-                    </div>
-                    <div class="text">
-                        <h4 class="title-case">VALOR TOTAL</h4>
-                        <p class="info">R$ 120,00 reais</p>
-                    </div>
-                </div>
-                <div class="description">
-                    <h4 class="title-case">DESCRIÇÃO</h4>
-                    <p class="info">A cadelinha Jolie foi atropelada por um carro no bairro Santana e teve que passar por uma cirurgia às pressas.</p>
-                </div>
-                <div class="value">
-                    <div class="text">
-                        <h4 class="title-case">VALOR ACUMULADO</h4>
-                        <p class="info last">R$ 120,00 reais</p>
-                    </div>
-                    <div class="link-button">
-                        <a href="">Ajudar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                    <div class="title-card">
-                        <h4 class="title-case">CASO</h4>
-                        <p class="info">Cadelinha atropelada</p>
-                    </div>
-                    <div class="text">
-                        <h4 class="title-case">VALOR TOTAL</h4>
-                        <p class="info">R$ 120,00 reais</p>
-                    </div>
-                </div>
-                <div class="description">
-                    <h4 class="title-case">DESCRIÇÃO</h4>
-                    <p class="info">A cadelinha Jolie foi atropelada por um carro no bairro Santana e teve que passar por uma cirurgia às pressas.</p>
-                </div>
-                <div class="value">
-                    <div class="text">
-                        <h4 class="title-case">VALOR ACUMULADO</h4>
-                        <p class="info last">R$ 120,00 reais</p>
-                    </div>
-                    <div class="link-button">
-                        <a href="">Ajudar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                    <div class="title-card">
-                        <h4 class="title-case">CASO</h4>
-                        <p class="info">Cadelinha atropelada</p>
-                    </div>
-                    <div class="text">
-                        <h4 class="title-case">VALOR TOTAL</h4>
-                        <p class="info">R$ 120,00 reais</p>
-                    </div>
-                </div>
-                <div class="description">
-                    <h4 class="title-case">DESCRIÇÃO</h4>
-                    <p class="info">A cadelinha Jolie foi atropelada por um carro no bairro Santana e teve que passar por uma cirurgia às pressas.</p>
-                </div>
-                <div class="value">
-                    <div class="text">
-                        <h4 class="title-case">VALOR ACUMULADO</h4>
-                        <p class="info last">R$ 120,00 reais</p>
-                    </div>
-                    <div class="link-button">
-                        <a href="">Ajudar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                    <div class="title-card">
-                        <h4 class="title-case">CASO</h4>
-                        <p class="info">Cadelinha atropelada</p>
-                    </div>
-                    <div class="text">
-                        <h4 class="title-case">VALOR TOTAL</h4>
-                        <p class="info">R$ 120,00 reais</p>
-                    </div>
-                </div>
-                <div class="description">
-                    <h4 class="title-case">DESCRIÇÃO</h4>
-                    <p class="info">A cadelinha Jolie foi atropelada por um carro no bairro Santana e teve que passar por uma cirurgia às pressas.</p>
-                </div>
-                <div class="value">
-                    <div class="text">
-                        <h4 class="title-case">VALOR ACUMULADO</h4>
-                        <p class="info last">R$ 120,00 reais</p>
-                    </div>
-                    <div class="link-button">
-                        <a href="">Ajudar</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-</body>
-</html>
+
+      

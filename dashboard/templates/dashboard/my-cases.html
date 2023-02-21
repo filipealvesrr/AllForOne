@@ -1,6 +1,7 @@
 {% extends 'global/base.html' %}
+{% load static %}
+{% block linkcss %}{% static 'dashboard/css/dash-style.css' %}{% endblock linkcss %}
 {% block title %}Meus casos{% endblock title %}
-
 {% block content %}
     <section class="title-section container">
         <h2>Meus casos</h2>
