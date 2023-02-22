@@ -4,15 +4,12 @@
 {% block title %}Meus casos{% endblock title %}
 {% block content %}
     <section class="title-section container">
-        <h2>Meus casos</h2>
+        <h2>Meus casos (Não publicados)</h2>
     </section>
     <section class="cards-section container">
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
+        {% for card in cards %}
+            {% include 'dashboard/partials/card.html' %}
+        {% endfor %}
     </section>
 {% endblock content %}
 

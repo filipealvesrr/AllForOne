@@ -17,7 +17,8 @@ class Caso(models.Model):
     date_expiration = models.DateField()
     is_published = models.BooleanField(default=False)
     category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True
+        Category, on_delete=models.SET_NULL,
+        null=True, blank=True, default=None,
     )
     usuario = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True

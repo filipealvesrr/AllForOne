@@ -8,12 +8,14 @@
         <h3>Bem vindo, Filipe</h3>
     </section>
     <section class="cards-section container">
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
-        {% include 'dashboard/partials/card.html' %}
+        {% for card in cards %}
+            {% include 'dashboard/partials/card.html' %}
+        {% empty %}
+            <div class="center">
+                <h1>Todos os casos estão resolvidos! </h1>
+            </div>
+        {% endfor %}
+        
     </section>
 {% endblock content %}
 
