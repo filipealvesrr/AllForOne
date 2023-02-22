@@ -6,6 +6,11 @@
     <section class="title-section container">
         <h2>Meus casos (Não publicados)</h2>
     </section>
+    {% if is_empty %}
+        <div class="empty-center container">
+            <h2>Todos os seus casos foram publicados! &#128513;</h1>
+        </div>
+    {% endif %}
     <section class="cards-section container">
         {% for card in cards %}
             {% include 'dashboard/partials/card.html' %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from dashboard.models import Caso, Category
+from django.contrib import messages  # noqa: F401
 
 
 def dashboard(request):
@@ -8,6 +9,7 @@ def dashboard(request):
     ).order_by('-id')
     return render(request, 'dashboard/pages/dashboard.html', context={
         'cards': cards,
+        'is_empty': len(cards) == 0,
         'is_dash': True,
         'is_card_dash': True,
     })
@@ -26,5 +28,6 @@ def my_cases(request):
     ).order_by('-id')
     return render(request, 'dashboard/pages/my-cases.html', context={
         'cards': cards,
+        'is_empty': len(cards) == 0,
         'is_dash': True,
     })

@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os  # noqa: F401
 from pathlib import Path
+from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -128,3 +130,13 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Define as classes Css para estilização das messages
+MESSAGE_TAGS = {
+    constants.DEBUG: 'message-debug',
+    constants.ERROR: 'message-error',
+    constants.INFO: 'message-info',
+    constants.SUCCESS: 'message-success',
+    constants.WARNING: 'message-debug',
+}

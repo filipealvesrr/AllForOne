@@ -13,7 +13,7 @@ class Caso(models.Model):
     title_of_case = models.CharField(max_length=100)
     description = models.TextField()
     value_total = models.FloatField()
-    value_received = models.FloatField()
+    value_received = models.FloatField(default=0.0)
     date_expiration = models.DateField()
     is_published = models.BooleanField(default=False)
     category = models.ForeignKey(

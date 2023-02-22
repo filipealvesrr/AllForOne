@@ -7,13 +7,14 @@
         <h2>Casos cadastrados</h2>
         <h3>Bem vindo, Filipe</h3>
     </section>
+    {% if is_empty %}
+        <div class="empty-center container">
+            <h2>Todos os casos foram resolvidos! &#128513;</h2>
+        </div>
+    {% endif %}
     <section class="cards-section container">
         {% for card in cards %}
             {% include 'dashboard/partials/card.html' %}
-        {% empty %}
-            <div class="center">
-                <h1>Todos os casos estão resolvidos! </h1>
-            </div>
         {% endfor %}
         
     </section>
