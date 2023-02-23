@@ -15,6 +15,21 @@
             <div class="description">
                 <h1>Faça o seu Logon</h1>
             </div>
+
+            <div class="form-container">
+                <form action="">
+                    {% csrf_token %}
+                    <input type="text" name="username" class="fields" id="fields" placeholder="Username">
+                    <input type="text" name="username" class="fields" id="fields" placeholder="Senha"> 
+                    <div class="buttons">
+                        <a href="{% url 'dashboard:home' %}">
+                            <i class="fa-brands fa-google"></i>
+                            <h6>Google</h6>
+                        </a>
+                        <input type="submit" value="Entrar" class="submit">
+                    </div>
+                </form>
+            </div>
     
             <div class="link-home">
                 <a href="{% url 'authors:register' %}">
@@ -24,11 +39,8 @@
             </div>
         </div>
         
-        <div class="form-register">
-            <form action="{% url 'authors:create' %}" method='POST'>
-                {% csrf_token %}
-                
-            </form>
+        <div class="image-container">
+            <img src="{% static 'authors/images/img.svg' %}" alt="Pessoas se abraçando em solidariedade">
         </div>
     </section>
 {% endblock content %}
