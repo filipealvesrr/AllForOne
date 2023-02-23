@@ -1,1 +1,45 @@
-<h1>Logon</h1>
+{% extends 'global/base.html' %}
+{% load static %}
+{% block linkcss %}{% static 'authors/css/register-style.css' %}{% endblock linkcss %}
+{% block title %}Cadastre-se{% endblock title %}
+{% block content %}
+    <section class="wrapper container">
+        <div class="text">
+            <div class="logo-container">
+                <a href="{% url 'authors:login' %}" class="logo">
+                    <i class="fa-solid fa-heart menu-icon"></i>
+                    <h1>AllForOne</h1>
+                </a>
+            </div>
+    
+            <div class="description">
+                <h1>Cadastro</h1>
+                <p>Faça seu cadastro, entre na plataforma e ajude pessoas com suas doações ou busque ajuda.</p>
+            </div>
+    
+            <div class="link-home">
+                <a href="/">
+                    <i class="fa-solid fa-left-long"></i>
+                    <h3>Voltar para o logon</h3>
+                </a>
+            </div>
+        </div>
+        
+        <div class="form-register">
+            <form action="{% url 'authors:create' %}" method='POST'>
+                {% csrf_token %}
+                <input type="text" name="first_name" class="field_large" placeholder="Nome">
+                <input type="text" name="last_name" class="field_large" placeholder="Sobrenome">
+                <input type="text" name="username" class="field_large" placeholder="Username">
+                <input type="email" name="email" class="field_large" placeholder="E-mail">
+                <div class="passwords">
+                    <input type="password" name="password" placeholder="Senha">
+                    <input type="password" name="password2" placeholder="Confirmar Senha">
+                </div>
+                <input type="submit" value="Cadastrar" class="submit">
+            </form>
+        </div>
+    </section>
+{% endblock content %}
+
+

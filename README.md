@@ -26,18 +26,26 @@ Instale o ambiente virtual do próprio VSC no terminal:
   python3 -m venv venv
   ```
 
-Em seguida, faça a atualização do pip e instalação do django:
+Em seguida, faça a atualização do pip
   ```
   pip install pip setuptools wheel --upgrade` (atualizações pendentes)
   ```
+  
+
+Feito isso, ative o ambiente virtual;
   ```
-  pip install django` (instalação do django no venv)
+  . venv/bin/activate` (para ativar o ambiente virtual no linux, ver como é no windows)
   ```
 
-Feito isso, ative o ambiente virtual e inicie o servidor;
+Fazer a instalação das dependências, gerar as migrações e iniciar o servidor.
   ```
-  . venv/bin/activate` (para ativar o ambiente virtual)
+  pip install -r requirements.txt` (instalação das dependências)
   ```
+  
+  ```
+  python manage.py migrate` (gerando as migrações)
+  ```
+
   ```
   python manage.py runserver` (para iniciar o servidor do django)
   ```

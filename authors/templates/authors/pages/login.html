@@ -1,0 +1,36 @@
+{% extends 'global/base.html' %}
+{% load static %}
+{% block linkcss %}{% static 'authors/css/login.css' %}{% endblock linkcss %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+    <section class="wrapper container">
+        <div class="text">
+            <div class="logo-container">
+                <a href="{% url 'authors:login' %}" class="logo">
+                    <i class="fa-solid fa-heart menu-icon"></i>
+                    <h1>AllForOne</h1>
+                </a>
+            </div>
+    
+            <div class="description">
+                <h1>Faça o seu Logon</h1>
+            </div>
+    
+            <div class="link-home">
+                <a href="{% url 'authors:register' %}">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <h3>Não tenho cadastro</h3>
+                </a>
+            </div>
+        </div>
+        
+        <div class="form-register">
+            <form action="{% url 'authors:create' %}" method='POST'>
+                {% csrf_token %}
+                
+            </form>
+        </div>
+    </section>
+{% endblock content %}
+
+

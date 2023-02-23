@@ -4,48 +4,48 @@
 {% block title %}Novo caso{% endblock title %}
 {% block content %}
     <section class="wrapper container">
-    <div class="text">
-        <div class="logo-container">
-            <a href="{% url 'dashboard:home' %}" class="logo">
-                <i class="fa-solid fa-heart menu-icon"></i>
-                <h1>AllForOne</h1>
-            </a>
-        </div>
+        <div class="text">
+            <div class="logo-container">
+                <a href="{% url 'dashboard:home' %}" class="logo">
+                    <i class="fa-solid fa-heart menu-icon"></i>
+                    <h1>AllForOne</h1>
+                </a>
+            </div>
 
-        <div class="description">
-            <h1>Cadastrar novo caso</h1>
-            <p>Descreva o caso detalhadamente para encontrar um herói para resolver isso.</p>
-        </div>
+            <div class="description">
+                <h1>Cadastrar novo caso</h1>
+                <p>Descreva o caso detalhadamente para encontrar um herói para resolver isso.</p>
+            </div>
 
-        <div class="link-home">
-            <a href="{% url 'dashboard:home' %}">
-                <i class="fa-solid fa-left-long"></i>
-                <h3>Voltar para o painel</h3>
-            </a>
+            <div class="link-home">
+                <a href="{% url 'dashboard:home' %}">
+                    <i class="fa-solid fa-left-long"></i>
+                    <h3>Voltar para o painel</h3>
+                </a>
+            </div>
         </div>
-    </div>
-    <div class="form-register">
-        <form action="">
-            <input type="text" name="title-case" id="title-case" placeholder="Titulo do caso">
-            <select name="type" id="" class="selection">
-                {% for category in categories %}
-                    <option value="">{{category.name}}</option>
-                {% endfor %}
-            </select>
-            <textarea name="description" id="description" placeholder="Descrição"></textarea>
-            <div class="value-data">
-                <input type="number" name="" id="value-case" placeholder="Valor em reais">
-                <div class="date">
-                    <label for="date-end">Data de Expiração</label>
-                    <input type="date" name="date-end" id="date-end">
+        <div class="form-register">
+            <form action="">
+                <input type="text" name="title-case" id="title-case" placeholder="Titulo do caso">
+                <select name="type" id="" class="selection">
+                    {% for category in categories %}
+                        <option value="">{{category.name}}</option>
+                    {% endfor %}
+                </select>
+                <textarea name="description" id="description" placeholder="Descrição"></textarea>
+                <div class="value-data">
+                    <input type="number" name="" id="value-case" placeholder="Valor em reais">
+                    <div class="date">
+                        <label for="date-end">Data de Expiração</label>
+                        <input type="date" name="date-end" id="date-end">
+                    </div>
                 </div>
-            </div>
-            <div class="buttons">
-                <a href="{% url 'dashboard:home' %}">Cancelar</a>
-                <input type="submit" value="Cadastrar" class="submit">
-            </div>
-        </form>
-    </div>
+                <div class="buttons">
+                    <a href="{% url 'dashboard:home' %}">Cancelar</a>
+                    <input type="submit" value="Cadastrar" class="submit">
+                </div>
+            </form>
+        </div>
     </section>
 {% endblock content %}
 
