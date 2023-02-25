@@ -17,12 +17,15 @@
             </div>
 
             <div class="form-container">
-                <form action="">
+                <form action="{% url 'authors:login_create' %}" method="POST">
                     {% csrf_token %}
-                    <input type="text" name="username" class="fields" id="fields" placeholder="Username">
-                    <input type="text" name="username" class="fields" id="fields" placeholder="Senha"> 
+                    {% for field in  form%}
+                        {{field}}
+                    {% endfor %}
+                    {% comment %} <input type="text" name="username" class="fields" id="fields" placeholder="Username">
+                    <input type="text" name="username" class="fields" id="fields" placeholder="Senha">  {% endcomment %}
                     <div class="buttons">
-                        <a href="{% url 'dashboard:home' %}">
+                        <a href="{% url 'authors:login' %}">
                             <i class="fa-brands fa-google"></i>
                             <h6>Google</h6>
                         </a>
@@ -33,6 +36,15 @@
             <div class="resetpass">
                 <a href="">Esqueci minha senha &#128549;</a>
             </div>
+
+            {% if messages %}
+                <div class="message message-error">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+                
             <div class="link-home">
                 <a href="{% url 'authors:register' %}">
                     <i class="fa-solid fa-right-to-bracket"></i>

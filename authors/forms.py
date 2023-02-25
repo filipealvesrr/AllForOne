@@ -97,3 +97,19 @@ class RegisterForm(forms.ModelForm):
                 code='invalid',)
 
         return email
+
+
+class LoginForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        add_placeholder(self.fields['username'], 'Username')
+        add_placeholder(self.fields['password'], 'Senha')
+        add_attr(self.fields['username'], 'class', 'fields')
+        add_attr(self.fields['password'], 'class', 'fields')
+
+    username = forms.CharField(
+
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput()
+    )
