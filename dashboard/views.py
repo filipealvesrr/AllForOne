@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from dashboard.models import Caso, Category
-from django.contrib import messages  # noqa: F401
 from django.contrib.auth.decorators import login_required
 
 
@@ -18,7 +17,7 @@ def dashboard(request):
     })
 
 
-# @login_required(login_url='authors:login', redirect_field_name='next')
+@login_required(login_url='authors:login', redirect_field_name='next')
 def new_case(request):
     categories = Category.objects.all()
     return render(request, 'dashboard/pages/new-case.html', context={
@@ -26,7 +25,7 @@ def new_case(request):
     })
 
 
-# @login_required(login_url='authors:login', redirect_field_name='next')
+@login_required(login_url='authors:login', redirect_field_name='next')
 def my_cases(request):
     usuario = request.user
     cards = Caso.objects.filter(
