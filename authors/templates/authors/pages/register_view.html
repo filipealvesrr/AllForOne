@@ -26,18 +26,28 @@
         </div>
         
         <div class="form-register">
-            <form action="{% url 'authors:create' %}" method='POST'>
+            <form action="{% url 'authors:create' %}" method="POST" class="form-container">
                 {% csrf_token %}
-                <input type="text" name="first_name" class="field_large" placeholder="Nome">
-                <input type="text" name="last_name" class="field_large" placeholder="Sobrenome">
-                <input type="text" name="username" class="field_large" placeholder="Username">
-                <input type="email" name="email" class="field_large" placeholder="E-mail">
-                <div class="passwords">
-                    <input type="password" name="password" placeholder="Senha">
-                    <input type="password" name="password2" placeholder="Confirmar Senha">
-                </div>
+                {% for field in form %}
+                    {{field}}
+                    {{field.errors}}
+                {% endfor %}
                 <input type="submit" value="Cadastrar" class="submit">
+
+                {% if form.errors %}
+                    <div class="message message-error">
+                        Por favor, corrija os erros existentes antes de enviar o formulário!
+                    </div>
+                {% endif %}
+
             </form>
+            {% if messages %}
+                    <div class="message message-success">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
         </div>
     </section>
 {% endblock content %}
