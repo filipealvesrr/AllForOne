@@ -1,36 +1,34 @@
 from django import forms
 from django.forms import DateInput
-# from django.core.exceptions import ValidationError
-from dashboard.models import Caso
+from dashboard.models import Caso, Category
 from authors.forms import add_attr, add_placeholder
 
 
 class NewCaseForm(forms.ModelForm):
-    CATEGORIES = (
-        ('Saúde', 'Saúde'),
-        ('Educação', 'Educação'),
-        ('Alimentação', 'Alimentação'),
-        ('Outros', 'Outros'),
-    )
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         add_placeholder(self.fields['title_of_case'], 'Título do caso')
         add_placeholder(self.fields['description'], 'Descrição')
         add_placeholder(self.fields['value_total'], 'Valor')
-        # add_attr(self.fields['title_of_case'], 'class', 'title-case')
         add_attr(self.fields['description'], 'class', 'description')
         add_attr(self.fields['value_total'], 'class', 'value-case')
         add_attr(self.fields['date_expiration'], 'class', 'date-end')
 
     date_expiration = forms.DateField(
         required=True,
-        widget=DateInput(attrs={'type': 'date'})
+        widget=DateInput(attrs={'type': 'date'}),
+        error_messages={
+            'required': 'Esse campo não pode ser vazio'
+        },
     )
 
-    category = forms.ChoiceField(
-        choices=CATEGORIES,
-        widget=forms.Select(attrs={'class': 'selection'})
+    category = forms.ModelChoiceField(
+        required=True,
+        queryset=Category.objects.all(),
+        widget=forms.Select(attrs={'class': 'selection'}),
+        error_messages={
+            'required': 'Esse campo não pode ser vazio'
+        },
     )
 
     class Meta:

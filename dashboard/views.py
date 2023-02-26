@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.http import Http404
 from .forms import NewCaseForm
-from dashboard.models import Caso
+from dashboard.models import Caso, Category
 from django.contrib.auth.decorators import login_required
 
 
@@ -21,17 +21,39 @@ def dashboard(request):
 
 @login_required(login_url='authors:login', redirect_field_name='next')
 def new_case(request):
-    form = NewCaseForm(request.POST)
-    # if request.method == "POST":
-    #     title_case = request.POST.get('title-case', None)
-    #     category = request.POST.get('category', None)
-    #     description = request.POST.get('description', None)
-    #     value_total = request.POST.get('value_total', None)
-    #     date_end = request.POST.get('date-end', None)
+    register_form_data = request.session.get('register_form_data', None)
+    form = NewCaseForm(register_form_data)
 
     return render(request, 'dashboard/pages/new-case.html', context={
         'form': form,
     })
+
+
+@login_required(login_url='authors:login', redirect_field_name='next')
+def new_case_create(request):
+    if not request.POST:
+        raise Http404()
+
+    POST = request.POST
+    request.session['register_form_data'] = POST
+
+    form = NewCaseForm(POST)
+    if form.is_valid():
+        category_name = form.cleaned_data['category']
+        category, _ = Category.objects.get_or_create(name=category_name)
+        caso: Caso = form.save(commit=False)
+        caso.value_received = 0.0
+        caso.usuario = request.user
+        caso.category = category
+        caso.is_published = False
+        caso.save()
+
+        del (request.session['register_form_data'])
+        return redirect('dashboard:mycases')
+    else:
+        print(form.errors)
+
+    return redirect('dashboard:newcase')
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
