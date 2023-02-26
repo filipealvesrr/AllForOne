@@ -12,7 +12,7 @@
                 </a>
             </div>
 
-            <div class="description">
+            <div class="description-case">
                 <h1>Cadastrar novo caso</h1>
                 <p>Descreva o caso detalhadamente para encontrar um herói para resolver isso.</p>
             </div>
@@ -25,19 +25,17 @@
             </div>
         </div>
         <div class="form-register">
-            <form action="">
-                <input type="text" name="title-case" id="title-case" placeholder="Titulo do caso">
-                <select name="type" id="" class="selection">
-                    {% for category in categories %}
-                        <option value="">{{category.name}}</option>
-                    {% endfor %}
-                </select>
-                <textarea name="description" id="description" placeholder="Descrição"></textarea>
+            <form action="{% url 'dashboard:mycases' %}" method="POST">
+                {% csrf_token %}
+                {{form.title_of_case}}
+                {{form.category}}
+                {{form.description}}
                 <div class="value-data">
-                    <input type="number" name="" id="value-case" placeholder="Valor em reais">
+                    {{form.value_total}}
                     <div class="date">
-                        <label for="date-end">Data de Expiração</label>
-                        <input type="date" name="date-end" id="date-end">
+                        {{form.label}}
+                        <label for="{{form.date_expiration.id_for_label}}" class"label">Data de Expiração</label>
+                        {{form.date_expiration}}
                     </div>
                 </div>
                 <div class="buttons">
@@ -45,6 +43,27 @@
                     <input type="submit" value="Cadastrar" class="submit">
                 </div>
             </form>
+            {% comment %} <form action="{% url 'dashboard:newcase' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="title-case" id="title-case" placeholder="Titulo do caso" required>
+                <select name="category" id="" class="selection" required>
+                    {% for category in status_choices %}
+                        <option value="{{category.0}}">{{category.1}}</option>
+                    {% endfor %}
+                </select>
+                <textarea name="description" class="description" placeholder="Descrição" required></textarea>
+                <div class="value-data">
+                    <input type="number" name="value_total" class="value-case" placeholder="Valor em reais" require>
+                    <div class="date">
+                        <label for="date-end">Data de Expiração</label>
+                        <input type="date" name="date-end" id="date-end" class="date-end" required>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <a href="{% url 'dashboard:home' %}">Cancelar</a>
+                    <input type="submit" value="Cadastrar" class="submit">
+                </div>
+            </form> {% endcomment %}
         </div>
     </section>
 {% endblock content %}

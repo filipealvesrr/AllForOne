@@ -141,3 +141,5 @@ MESSAGE_TAGS = {
     constants.SUCCESS: 'message-success',
     constants.WARNING: 'message-debug',
 }
+
+DATE_INPUT_FORMATS = ['%d/%m/%Y']

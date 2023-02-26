@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from dashboard.models import Caso, Category
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import NewCaseForm
+from dashboard.models import Caso
 from django.contrib.auth.decorators import login_required
 
 
@@ -19,9 +21,16 @@ def dashboard(request):
 
 @login_required(login_url='authors:login', redirect_field_name='next')
 def new_case(request):
-    categories = Category.objects.all()
+    form = NewCaseForm(request.POST)
+    # if request.method == "POST":
+    #     title_case = request.POST.get('title-case', None)
+    #     category = request.POST.get('category', None)
+    #     description = request.POST.get('description', None)
+    #     value_total = request.POST.get('value_total', None)
+    #     date_end = request.POST.get('date-end', None)
+
     return render(request, 'dashboard/pages/new-case.html', context={
-        'categories': categories,
+        'form': form,
     })
 
 
