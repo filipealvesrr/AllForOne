@@ -5,13 +5,19 @@ from dashboard.models import Caso, Category, Donate
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.urls import reverse
+from django.utils import timezone
+from django.db.models import F
 import datetime
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
 def dashboard(request):
+    now = timezone.now()
+
     cards = Caso.objects.filter(
-        is_published=True
+        is_published=True,
+        value_received__lt=F('value_total'),
+        date_expiration__gt=now,
     ).order_by('-id')
 
     return render(request, 'dashboard/pages/dashboard.html', context={
