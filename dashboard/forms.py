@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import DateInput
-from dashboard.models import Caso, Category
+from dashboard.models import Caso, Category, Donate
 from authors.forms import add_attr, add_placeholder
 
 
@@ -39,4 +39,17 @@ class NewCaseForm(forms.ModelForm):
             'description',
             'value_total',
             'date_expiration'
+        ]
+
+
+class DonateForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        add_placeholder(self.fields['value_of_donate'], 'Valor da doação')
+        add_attr(self.fields['value_of_donate'], 'class', 'field_large')
+
+    class Meta:
+        model = Donate
+        fields = [
+            'value_of_donate',
         ]

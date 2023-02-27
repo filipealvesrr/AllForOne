@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
-from .forms import NewCaseForm
-from dashboard.models import Caso, Category
+from .forms import NewCaseForm, DonateForm
+from dashboard.models import Caso, Category, Donate
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.urls import reverse
+import datetime
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
@@ -65,7 +67,7 @@ def my_cases(request):
         usuario=usuario,
     ).order_by('-id')
 
-    p = Paginator(cards,4)
+    p = Paginator(cards, 4)  # noqa E231
     page = request.GET.get('page')
     card_list = p.get_page(page)
 
@@ -75,3 +77,37 @@ def my_cases(request):
         'is_dash': True,
         'card_list': card_list
     })
+
+
+@login_required(login_url='authors:login', redirect_field_name='next')
+def donate(request, caso_id):
+    register_form_data = request.session.get('register_form_data', None)
+    form = DonateForm(register_form_data)
+    url = reverse('dashboard:donate_create', kwargs={'caso_id': caso_id})
+
+    return render(request, 'dashboard/pages/donate.html', context={
+        'form': form,
+        'url': url,
+    })
+
+
+@login_required(login_url='authors:login', redirect_field_name='next')
+def donate_create(request, caso_id):
+    if not request.POST:
+        raise Http404()
+
+    POST = request.POST
+    request.session['register_form_data'] = POST
+    form = DonateForm(POST)
+    caso = get_object_or_404(Caso, id=caso_id)
+    if form.is_valid():
+        donate: Donate = form.save(commit=False)
+        donate.date_of_donate = datetime.date.today()
+        donate.usuario = request.user
+        caso.value_received += donate.value_of_donate
+        caso.save()
+        donate.caso = caso
+        donate.save()
+        del (request.session['register_form_data'])
+        return redirect('dashboard:home')
+    return redirect('dashboard:donate', caso_id=caso_id)

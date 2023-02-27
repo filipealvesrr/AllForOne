@@ -21,7 +21,7 @@
                 <p class="info last">R$ {{card.value_received}}</p>
             </div>
             <div class="link-button">
-                <a href="">Ajudar</a>
+                <a href="{% url 'dashboard:donate' card.id%}">Ajudar</a>
             </div>
         </div>
     {% endif %}

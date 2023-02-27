@@ -1,0 +1,37 @@
+{% extends 'global/base.html' %}
+{% load static %}
+{% block linkcss %}{% static 'dashboard/css/donate.css' %}{% endblock linkcss %}
+{% block title %}Novo caso{% endblock title %}
+{% block content %}
+    <section class="wrapper container">
+        <div class="text">
+            <div class="logo-container">
+                <a href="{% url 'dashboard:home' %}" class="logo">
+                    <i class="fa-solid fa-heart menu-icon"></i>
+                    <h1>AllForOne</h1>
+                </a>
+            </div>
+
+            <div class="description-case">
+                <h1>Efetuar Doação</h1>
+                <p>Insira o valor da sua doação. Lembre-se herói: "Com grandes poderes vem grandes responsabilidades!".</p>
+            </div>
+
+            <div class="link-home">
+                <a href="{% url 'dashboard:home' %}">
+                    <i class="fa-solid fa-left-long"></i>
+                    <h3>Voltar para o painel</h3>
+                </a>
+            </div>
+        </div>
+        <div class="form-register">
+            <form action="{{ url }}" method="POST">
+                {% csrf_token %}
+                    {{form.value_of_donate}}
+                <input type="submit" value="Doar" class="submit">
+            </form>
+        </div>
+    </section>
+{% endblock content %}
+
+
