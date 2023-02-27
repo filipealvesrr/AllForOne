@@ -3,6 +3,7 @@ from django.http import Http404
 from .forms import NewCaseForm
 from dashboard.models import Caso, Category
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
@@ -63,8 +64,14 @@ def my_cases(request):
         is_published=False,
         usuario=usuario,
     ).order_by('-id')
+
+    p = Paginator(cards,4)
+    page = request.GET.get('page')
+    card_list = p.get_page(page)
+
     return render(request, 'dashboard/pages/my-cases.html', context={
         'cards': cards,
         'is_empty': len(cards) == 0,
         'is_dash': True,
+        'card_list': card_list
     })
