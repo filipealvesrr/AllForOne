@@ -41,6 +41,10 @@ class NewCaseForm(forms.ModelForm):
             'date_expiration'
         ]
 
+        widgets = {
+            'value_total': forms.NumberInput(attrs={'min': 0, 'pattern': '^[0-9]*\.?[0-9]+$'})
+        }
+
 
 class DonateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -53,3 +57,7 @@ class DonateForm(forms.ModelForm):
         fields = [
             'value_of_donate',
         ]
+
+        widgets = {
+            'value_of_donate': forms.NumberInput(attrs={'min': 0, 'pattern': '^[0-9]*\.?[0-9]+$'})
+        }
