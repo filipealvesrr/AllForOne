@@ -55,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'path.to.middleware.DisableCSRFMiddleware',
+
 ]
 
 ROOT_URLCONF = 'AllForOne.urls'
