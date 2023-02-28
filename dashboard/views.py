@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 from django.urls import reverse
 from django.utils import timezone
 from django.db.models import F
+from django.views.decorators.csrf import csrf_exempt
 import datetime
 
 
@@ -29,6 +30,7 @@ def dashboard(request):
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
+@csrf_exempt
 def new_case(request):
     register_form_data = request.session.get('register_form_data', None)
     form = NewCaseForm(register_form_data)
@@ -39,6 +41,7 @@ def new_case(request):
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
+@csrf_exempt
 def new_case_create(request):
     if not request.POST:
         raise Http404()
@@ -86,6 +89,7 @@ def my_cases(request):
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
+@csrf_exempt
 def donate(request, caso_id):
     register_form_data = request.session.get('register_form_data', None)
     form = DonateForm(register_form_data)
@@ -98,6 +102,7 @@ def donate(request, caso_id):
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
+@csrf_exempt
 def donate_create(request, caso_id):
     if not request.POST:
         raise Http404()

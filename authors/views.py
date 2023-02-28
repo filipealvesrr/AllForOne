@@ -4,7 +4,7 @@ from .forms import RegisterForm, LoginForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.views.decorators.csrf import csrf_exempt
 
 
 def register_view(request):
@@ -38,7 +38,7 @@ def register_create(request):
     return redirect('authors:register')
 
 
-@csrf_protect
+@csrf_exempt
 def login_view(request):
     form = LoginForm()
     return render(request, 'authors/pages/login.html', context={
@@ -46,7 +46,7 @@ def login_view(request):
     })
 
 
-@csrf_protect
+@csrf_exempt
 def login_create(request):
     if not request.POST:
         raise Http404()
