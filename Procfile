@@ -1,1 +1,0 @@
-web: gunicorn AllForOne.wsgi --log-file - 
