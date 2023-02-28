@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 def register_view(request):
     register_form_data = request.session.get('register_form_data', None)
     form = RegisterForm(register_form_data)
@@ -16,6 +17,7 @@ def register_view(request):
     })
 
 
+@csrf_exempt
 def register_create(request):
     if not request.POST:
         raise Http404()
