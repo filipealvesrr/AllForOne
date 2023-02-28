@@ -114,10 +114,21 @@ LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
 
+
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
+# Configurações de envio do e-mail
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "naorespondaallforoneunivasf@gmail.com"
+EMAIL_HOST_PASSWORD = "mmjojvezyvvqjdok"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

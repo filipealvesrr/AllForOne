@@ -70,3 +70,7 @@ def login_create(request):
 def logout_view(request):
     logout(request)
     return redirect('authors:login')
+
+
+def reset_done(request):
+    return render(request, )

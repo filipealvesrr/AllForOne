@@ -42,7 +42,7 @@ class NewCaseForm(forms.ModelForm):
         ]
 
         widgets = {
-            'value_total': forms.NumberInput(attrs={'min': 0, 'pattern': '^[0-9]*\.?[0-9]+$'})
+            'value_total': forms.NumberInput(attrs={'min': 0, 'pattern': '^[0-9]*\.?[0-9]+$'})  # noqa E501
         }
 
 
@@ -59,5 +59,5 @@ class DonateForm(forms.ModelForm):
         ]
 
         widgets = {
-            'value_of_donate': forms.NumberInput(attrs={'min': 0, 'pattern': '^[0-9]*\.?[0-9]+$'})
+            'value_of_donate': forms.NumberInput(attrs={'min': 0, 'pattern': '^[0-9]*\.?[0-9]+$'})  # noqa E501
         }
