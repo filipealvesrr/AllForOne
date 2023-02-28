@@ -38,6 +38,7 @@ def register_create(request):
     return redirect('authors:register')
 
 
+@csrf_protect
 def login_view(request):
     form = LoginForm()
     return render(request, 'authors/pages/login.html', context={
@@ -72,7 +73,3 @@ def login_create(request):
 def logout_view(request):
     logout(request)
     return redirect('authors:login')
-
-
-def reset_done(request):
-    return render(request, )
